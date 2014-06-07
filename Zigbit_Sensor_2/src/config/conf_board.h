@@ -44,4 +44,11 @@
 #ifndef CONF_BOARD_H_INCLUDED
 #define CONF_BOARD_H_INCLUDED
 
+/* Initialize the SPI pins for use with the on-board serial flash or with the
+ * WIRELESS connector or with the Sensors Xplained extension board. */
+#define CONF_BOARD_SPI
+
+/* Initialize the SPI CS for the WIRELESS connector. */
+#define CONF_BOARD_SPI_NPCS0
+
 #endif /* CONF_BOARD_H_INCLUDED */

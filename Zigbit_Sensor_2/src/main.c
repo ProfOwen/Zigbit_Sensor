@@ -28,13 +28,25 @@
  * Include header files for all drivers that have been imported from
  * Atmel Software Framework (ASF).
  */
-#include <asf.h>
-#include "avr2025_mac.h"
-#include "pal.h"
+
+#include "main.h"
 
 int main (void)
 {
 	system_init();
+	
+	ioport_set_pin_dir(AT86RFX_RST_PIN, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(AT86RFX_RST_PIN, IOPORT_PIN_LEVEL_HIGH);
+	ioport_set_pin_dir(AT86RFX_SLP_PIN, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(AT86RFX_SLP_PIN, IOPORT_PIN_LEVEL_HIGH);
+	
+	delay_init();
+	sw_timer_init();
+	
+	if (wpan_init() != MAC_SUCCESS)
+	{
+		alert();
+	}
 
 	// Insert application code here, after the board has been initialized.
 
@@ -48,5 +60,20 @@ int main (void)
 			// No, so turn LED off.
 			port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
 		}
+	}
+}
+
+/************************************************************************/
+/* Subroutines                                                          */
+/************************************************************************/
+
+static void alert (void)
+{
+	cpu_irq_disable();
+	ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE);
+	
+	while (true)
+	{
+		// Do nothing
 	}
 }

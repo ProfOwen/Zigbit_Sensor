@@ -192,7 +192,7 @@ enum status_code protocol_get_channel_data(
 {
 	/* Make sure we're not busy */
 	if (rx_busy) {
-		return STATUS_ERR_BUSY;
+		return STATUS_BUSY;
 	}
 	/* Make sure node ID is sane */
 	if (node_id >= NUM_NODES) {

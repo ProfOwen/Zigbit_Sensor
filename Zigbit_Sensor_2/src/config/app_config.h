@@ -59,7 +59,7 @@
 /* === Macros =============================================================== */
 
 /** Defines the number of timers used by the application. */
-#define NUMBER_OF_APP_TIMERS        (0)
+#define NUMBER_OF_APP_TIMERS        (2)
 
 #if (!defined TOTAL_NUMBER_OF_TIMERS)
 
